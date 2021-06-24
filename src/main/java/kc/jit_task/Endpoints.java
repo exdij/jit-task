@@ -48,6 +48,8 @@ public class Endpoints {
         return ResponseEntity.ok()
                 .body("ok");
     }
+    @PostMapping(value="authenticate")
+
     @PutMapping(value="update")
     public ResponseEntity<String> update(@RequestBody Pokemon pokemon){
         pokemonRepository.save(pokemon);
@@ -72,4 +74,5 @@ public class Endpoints {
         return ResponseEntity.ok()
                 .body("ok");
     }
+
 }

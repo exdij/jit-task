@@ -1,0 +1,1 @@
+INSERT INTO USER (id, username, password) values (1, 'jit_user','jit_password');
