@@ -1,0 +1,47 @@
+API endpoints:
+    GET:
+        *** GET endpoints doesn't require authentication ***
+
+        /getById - returns json entity of a pokemon if found
+                - requires param "id" with id number to lookup
+
+        /getAll  - returns json list of all pokemon entities in the database
+                - requires (optionally) pageNo (page number, default is 0) and pageSize (number of entities per page, default is 5) for pagination
+
+        /getByName - returns json list of all pokemon with given name in the database
+                  - requires param "name" with name that is to be lookedup in the database(case insensitive) (optionally)
+                  pageNo (page number, default is 0) and pageSize (number of entities per page, default is 5) for pagination
+
+        /getByType   - returns json list of all pokemon with given type in the database
+                    - requires param "type" with type that is to be lookedup in the database(case insensitive) (optionally)
+                      pageNo (page number, default is 0) and pageSize (number of entities per page, default is 5) for pagination
+
+    POST:
+        *** POST endpoints require user to authenticate using Basic Auth - user: jit_user, password: jit_pass ***
+
+        /saveAll - returns http status 200 when successfull
+                - requires json list of pokemon entities to be saved into the database
+
+        /saveOne - returns http status 200 when successfull
+                requires json pokemon entity to be saved into the database
+
+    PUT
+        *** PUT endpoints require user to authenticate using Basic Auth - user: jit_user, password: jit_pass ***
+
+        /updateById - returns http status 200 when successfull, 400 if not
+                   - requires "id" param with id of the pokemon to be updated, and json entity of a pokemon to be saved
+
+        /updateByName - returns http status 200 when successfull, 400 if not
+                   - requires "name" param with name of the pokemon to be updated (if multiple are found, only the first is updated)
+                   and json entity of a pokemon to be saved
+
+    DELETE
+        *** DELETE endpoints require user to authenticate using Basic Auth - user: jit_user, password: jit_pass ***
+
+        /deleteById - deletes a pokemon from the database, returns http status 200
+                   - requires "id" param with id number of pokemon to be deleted from the database
+
+        /deleteByAll - truncates the pokemon database, returns http status 200
+
+        /deleteByName - deletes a pokemon with given name, returns http status 200 when successfull, 400 if not
+                     - requires "name" param with name of pokemon to be deleted from the database

@@ -134,20 +134,26 @@ public class Endpoints {
                 .body("ok");
     }
 
-    @DeleteMapping(
-            value="delete",
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> delete(@RequestBody Pokemon pokemon){
-        pokemonRepository.delete(pokemon);
-        return ResponseEntity.ok()
-                .body("ok");
-    }
 
     @DeleteMapping(value="deleteAll")
     public ResponseEntity<String> deleteAll(){
         pokemonRepository.deleteAll();
         return ResponseEntity.ok()
                 .body("ok");
+    }
+
+    @DeleteMapping(value="deleteByName")
+    public ResponseEntity<String> deleteByName(@RequestParam String name){
+        List<Pokemon> pokemonDb;
+        pokemonDb = pokemonRepository.findByNameLikeIgnoreCase(name);
+
+        if(pokemonDb.size() > 0){
+            pokemonRepository.deleteById(pokemonDb.get(0).getId());
+            return ResponseEntity.ok()
+                    .body("ok");
+        }
+        return ResponseEntity.badRequest()
+                .body("Name not found");
     }
 
 }
