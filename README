@@ -1,3 +1,6 @@
+This application uses an inmemory h2 database so keep in mind it will drop any data you insert to it when you restart the application.
+The database is initialised with 3 example pokemons. 
+You can find more pokemons in pokemons.csv file in resources directory.
 API endpoints:
     GET:
         *** GET endpoints doesn't require authentication ***
