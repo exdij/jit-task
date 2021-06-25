@@ -1,6 +1,16 @@
 This application uses an inmemory h2 database so keep in mind it will drop any data you insert to it when you restart the application.
 The database is initialised with 3 example pokemons. 
 You can find more pokemons in pokemons.csv file in resources directory.
+
+Fields of an pokemon object are as follows, most are self explanatory:
+name
+img - link to an image showing the pokemon
+type
+height
+weight
+weakness
+next_evolution - name of the pokemon next evolution
+
 API endpoints:
     GET:
         *** GET endpoints doesn't require authentication ***
